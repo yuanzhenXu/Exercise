@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercise</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div id="div-li">
+    <div id="list">
+      <ul>
+        <li></li>
+      </ul>
+
+    </div>
+
+  </div>
+    <%= yield %>
+  </body>
+<footer>
+  <%= yield :footer%>
+</footer>
+
+</html>
