@@ -1,27 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Exercise</title>
+    <title>选</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/slim' %>
   </head>
-
   <body>
-  <div id="div-li">
-    <div id="list">
-      <ul>
-        <li></li>
-      </ul>
-
-    </div>
-
-  </div>
+  <%= render 'layouts/header' %>
+  <div class="container">
     <%= yield %>
+    <%= render 'layouts/footer' %>
+  </div>
   </body>
-<footer>
-  <%= yield :footer%>
-</footer>
 
 </html>

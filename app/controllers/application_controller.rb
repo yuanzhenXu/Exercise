@@ -3,4 +3,10 @@ class ApplicationController < ActionController::Base
   def layout
     render 'layouts/application'
   end
+  def footer
+    render 'layouts/footer'
+  end
+  # def index
+  #   render 'users/index'
+  # end
 end
