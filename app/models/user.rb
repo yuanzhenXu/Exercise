@@ -1,8 +1,9 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
 
   #将email的属性值转换成小写形式
-  before_save { self.email = email.downcase }
+  before_save :downcase_email
+  before_create :create_activation_digest
 
   validates :name, presence: true,length:  { maximum: 50 }
   validates :password,length: { minimum: 6 }, allow_nil: true #更新时允许密码为空
@@ -34,14 +35,36 @@ class User < ApplicationRecord
   end
 
   #如果指定的令牌和摘要匹配，返回true
-  def authenticated?(remember_token)
-    return false if remember_digest.nil?
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  def authenticated?(attribute,token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
   end
 
   #忘记用户
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  #激活账户
+  def activate
+    update_attribute(:activated,true)
+    update_attribute(:activated_at, Time.zone.now)
+  end
+
+  #发送激活邮件
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+  private
+  #把电子邮件地址转换成小写
+  def downcase_email
+    self.email = email.downcase
+  end
+
+  def create_activation_digest
+    self.activation_token = User.new_token
+    self.activation_digest = User.digest(activation_token)
   end
 
 end
