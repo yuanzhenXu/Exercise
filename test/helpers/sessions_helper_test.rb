@@ -1,6 +1,7 @@
 require 'test_helper'
 class SessionsHelperTest < ActionView::TestCase
 
+  # 测试持久会话
   def setup
     @user = users(:michael)
     remember(@user)

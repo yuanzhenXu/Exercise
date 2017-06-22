@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       #登入用户，然后重定向到用户的资料页面
       log_in  user
+      #记住密码
       params[:session][:remember_me] == '1' ?  remember(user) : forget(user)
       redirect_to  user
     else
@@ -17,6 +18,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  #退出登录
   def destroy
     log_out if logged_in?
     redirect_to root_url
