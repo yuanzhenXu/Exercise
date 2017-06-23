@@ -4,9 +4,8 @@ class UserMailer < ApplicationMailer
   # with the following lookup:
   #
   #   en.user_mailer.account_activation.subject
-  #
+  #账户激活邮件
   def account_activation(user)
-    @greeting = "Hi"
     @user = user
     mail to: user.email, subject: "Account activation"
   end
@@ -15,10 +14,9 @@ class UserMailer < ApplicationMailer
   # with the following lookup:
   #
   #   en.user_mailer.password_reset.subject
-  #
-  def password_reset
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  #密码重置邮件
+  def password_reset(user)
+    @user = user
+    mail to: user.email, subject: "Password reset"
   end
 end
