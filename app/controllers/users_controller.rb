@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
     # redirect_to root_url unless @user.activated == true
     # 调试器(如果觉得那部分有问题，就可以在可能导致问题的代码附近加上debugger方法)
     # debugger
@@ -66,14 +67,7 @@ class UsersController < ApplicationController
   end
 
     # Use callbacks to share common setup or constraints between actions.
-  #确保用户已登录
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "please log in"
-      redirect_to login_url
-    end
-  end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
 

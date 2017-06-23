@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
+  has_many :microposts, dependent: :destroy
 
   #将email的属性值转换成小写形式
   before_save :downcase_email
@@ -74,6 +75,10 @@ class User < ApplicationRecord
     reset_sent_at < 2.hour.ago
   end
 
+  #实现动态流原型
+  def feed
+    microposts
+  end
   private
   #把电子邮件地址转换成小写
   def downcase_email
