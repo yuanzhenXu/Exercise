@@ -4,7 +4,7 @@ class Micropost < ApplicationRecord
   mount_uploader :picture, PictureUploader #图像上传程序
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }
-  validates :picture_size
+  # validates :picture_size
 
   #验证上传图像的大小
   def picture_size
