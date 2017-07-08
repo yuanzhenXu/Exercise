@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:page])
+    # @microposts = @user.microposts.paginate(page: params[:page])
     # redirect_to root_url unless @user.activated == true
     # 调试器(如果觉得那部分有问题，就可以在可能导致问题的代码附近加上debugger方法)
     # debugger
@@ -60,19 +60,19 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def following
-    @title = "Folloing"
-    @user = User.find(params[:id])
-    @users = @user.following.paginate(page: params[:page])
-    render 'show_follow'
-  end
+  # def following
+  #   @title = "Folloing"
+  #   @user = User.find(params[:id])
+  #   @users = @user.following.paginate(page: params[:page])
+  #   render 'show_follow'
+  # end
 
-  def followers
-    @title = "Followers"
-    @user = User.find(params[:id])
-    @users = @user.following.paginate(page: params[:page])
-    render 'show_follow'
-  end
+  # def followers
+  #   @title = "Followers"
+  #   @user = User.find(params[:id])
+  #   @users = @user.following.paginate(page: params[:page])
+  #   render 'show_follow'
+  # end
   private
 
   def user_params
