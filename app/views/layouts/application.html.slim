@@ -9,9 +9,9 @@ html
   = render 'layouts/slim'
   body
   = render 'layouts/header'
-  = render 'layouts/side'
+  /= render 'layouts/side'
   .container
   - flash.each do |message_type, message|
   = yield
-  = render 'layouts/footer'
+  /= render 'layouts/footer'
 

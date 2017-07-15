@@ -1,20 +1,20 @@
 - provide(:title, "All users")
 h1 All Users
-table.table.table-hover
-  tr
-    /th.active Gravtior
-    th.active Name
-    th.active Email
-    th.active colspan="2"
-  - @users.each do |user|
-    tr
-      /td.success = gravatar_for @user
-      td.success = user.name
-      td.success = user.email
-      td.success = link_to 'delete', user, method: :delete, data: { confirm:"you sure?"}
-      td.success = link_to 'Edit', edit_user_path(user)
-/ul.users
+/table.table.table-hover
+/  tr
+/    /th.active Gravtior
+/    th.active Name
+/    th.active Email
+/    th.active colspan="2"
 /  - @users.each do |user|
-/    = render @users
+/    tr
+/      /td.success = gravatar_for @user
+/      td.success = user.name
+/      td.success = user.email
+/      td.success = link_to 'delete', user, method: :delete, data: { confirm:"you sure?"}
+/      td.success = link_to 'Edit', edit_user_path(user)
+ul.users
+  - @users.each do |user|
+    = render @users
 /! 分页
 = will_paginate

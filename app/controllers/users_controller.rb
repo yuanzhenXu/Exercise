@@ -27,8 +27,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # POST /users
-  # POST /users.json
+
   def create
     @user = User.new(user_params)
 
@@ -41,7 +40,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
   def update
     @user = User.find(params[:id])
       if @user.update(user_params)
