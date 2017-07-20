@@ -30,12 +30,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
+    # debugger
     if @user.save
       # @user.send_activation_email
-      #   flash[:info] = "Please check your email to activate your account."
-        redirect_to root_url
+      flash[:notice] = "success"
+      redirect_to @user
     else
+      flash[:alert] = "failed"
       render 'new'
     end
   end
@@ -43,9 +44,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
       if @user.update(user_params)
-        flash[:success] = "Profile updated"
+        flash[:notice] = "Profile updated"
         redirect_to @user
       else
+        flash[:alert] = "failed ,try again please"
         render 'edit'
       end
   end
@@ -54,23 +56,23 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:success] = "User deleted"
+    flash[:notice] = "User deleted"
     redirect_to users_url
   end
 
-  # def following
-  #   @title = "Folloing"
-  #   @user = User.find(params[:id])
-  #   @users = @user.following.paginate(page: params[:page])
-  #   render 'show_follow'
-  # end
+  def following
+    @title = "Folloing"
+    @user = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
 
-  # def followers
-  #   @title = "Followers"
-  #   @user = User.find(params[:id])
-  #   @users = @user.following.paginate(page: params[:page])
-  #   render 'show_follow'
-  # end
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
   private
 
   def user_params

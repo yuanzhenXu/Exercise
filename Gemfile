@@ -14,7 +14,10 @@ gem 'mini_magick'
 gem 'fog'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
+gem 'select2-rails'
+gem 'multi-select-rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -23,6 +26,7 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'slim-rails'
 gem 'simple_form'
+gem 'font-awesome-sass'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes

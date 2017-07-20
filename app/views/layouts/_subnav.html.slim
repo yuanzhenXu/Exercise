@@ -1,0 +1,14 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-8
+    /h2= "#"
+    ol.breadcrumb
+      li= link_to '首页', root_path
+      - if action_name == 'index'
+        li.active= 'List'
+  /.col-lg-4
+  /  .title-action
+  /    - if action_name == 'index'
+  /      /- if have_new_btn?
+  /      = link_to '添加', {controller: controller_name, action: :new}, class: 'btn btn-sm btn-primary'
+  /    - else
+  /      = link_to '返回', {controller: controller_name, action: :index}, class: 'btn btn-sm btn-primary'

@@ -1,0 +1,44 @@
+.admin-order-item {
+  margin-bottom: 8px;
+  .ibox-content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0;
+    .alert {
+      margin-bottom: 0;
+    }
+  }
+  hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+#admin_orders_show {
+  hr {
+    margin-top: 0px;
+    // margin-bottom: 20px;
+  }
+
+  $img-width: 100px;
+  $img-height: $img-width;
+  .list-group-item {
+    padding: 0 20px 0 0;
+    margin-bottom: 10px;
+    position: relative;
+    height: $img-height;
+  }
+  .list-group-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    img {
+      width: $img-width;
+      height: $img-height;
+    }
+  }
+  .list-group-content {
+    padding-left: $img-width + 10px;
+    height: $img-height;
+  }
+}

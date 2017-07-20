@@ -1,11 +1,15 @@
-= form_for(@user) do |f|
-  = render 'shared/error_message', object:f.object
-  = f.label :name
-  = f.text_field :name, class: 'form-control'
-  = f.label :email
-  = f.email_field :email, class: 'form-control'
-  = f.label :password
-  = f.password_field :password, class: 'form-control'
-  = f.label :password_confirmation, "Conformation"
-  = f.password_field :password_confirmation, class: 'form-control'
-  = f.submit yield(:button_text), class: "btn btn-primary "
+.middle-box.text-center.loginscreen.animated.fadeInDown
+  div
+    /h2 sign up
+    = form_for @user,url: users_path, class: 'm-t', role: 'form' do |f|
+      = render 'shared/error_message', object:f.object
+      .form-group
+        = f.text_field :name, class: 'form-control', placeholder: User.human_attribute_name(:name), required: true
+      .form-group
+        = f.email_field :email, class: 'form-control', placeholder: User.human_attribute_name(:email), required: true
+      .form-group
+        = f.password_field :password, class: 'form-control', placeholder: User.human_attribute_name(:password), required: true
+      .form-group
+        = f.password_field :password_confirmation, class: 'form-control', placeholder: User.human_attribute_name(:password_confirmation), required: true
+      = f.submit yield(:button_text), class: 'btn btn-primary block full-width m-b'
+        / = link

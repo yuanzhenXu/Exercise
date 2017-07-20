@@ -1,20 +1,24 @@
-- provide(:title, "All users")
-h1 All Users
-/table.table.table-hover
-/  tr
-/    /th.active Gravtior
-/    th.active Name
-/    th.active Email
-/    th.active colspan="2"
-/  - @users.each do |user|
-/    tr
-/      /td.success = gravatar_for @user
-/      td.success = user.name
-/      td.success = user.email
-/      td.success = link_to 'delete', user, method: :delete, data: { confirm:"you sure?"}
-/      td.success = link_to 'Edit', edit_user_path(user)
-ul.users
-  - @users.each do |user|
-    = render @users
-/! 分页
-= will_paginate
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    h2 用户管理
+    =render 'layouts/subnav'
+
+wrapper.wrapper-content.animated.fadeInRight
+  .ibox.float-e-margins
+    .ibox-content
+      small= "Total: #{User.count}"
+      table.table.table-striped id='links'
+        tr
+          th 用户ID
+          th 昵称
+          th.text-center 头像
+          th= link_to '添加', {controller: controller_name, action: :new}, class: 'btn btn-sm btn-primary'
+        - @users.each do |user|
+          tr
+            td= user.id
+            td= user.name
+            td= gravatar_for user
+            td
+              - if current_user.admin? && !current_user?(user)
+                | | #{link_to "delete", user, method: :delete, data: {confirm: "you sure?"}}
+                /    = link_to 'destroy', user_path(user), method: :delete, class: 'btn btn-default btn-sm'

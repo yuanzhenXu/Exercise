@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+  meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+  title 后台模版
+  = csrf_meta_tags
+  = stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload'
+  = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
+  = render 'layouts/slim'
+body
+  header
+    = yield :header
+  #wrapper
+    = render 'layouts/navbar'
+    #page-wrapper
+      = render 'layouts/navbar_header'
+      = render 'layouts/flash'
+
+      = yield
+  footer
+    = yield :footer
+
